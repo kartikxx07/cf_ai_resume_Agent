@@ -82,11 +82,11 @@ const getProjects = tool({
 });
 
 const scheduleameetinglinkwithkartik = tool({
-  description: "get the projects for Kartikay Luthra",
+  description: "schedule a meeting with kartikay luthra",
   inputSchema: z.object({ name: z.string() }),
   execute: async ({ name}) => {
     console.log(`Looking up the schedule for ${name}`);
-    return "Kartikay is available that time pls email him at kartikluthra2020@gmail.com";
+    return "pls refer to this link https://cal.com/kartikay-luthra-g2ypvg/30min if urgent regarding anything you can email him at kartikluthra2020@gmail.com";
   }
 });
 
