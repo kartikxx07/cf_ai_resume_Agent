@@ -46,11 +46,11 @@ Certifications: HackerRank (DS, Software Engineer, SQL)
 `;
 
 const getInformation = tool({
-  description: "get personal information",
+  description: "tells a bit about Kartikay",
   inputSchema: z.object({ name: z.string() }),
   execute: async ({}) => {
     console.log("fetching results ...");
-    return "Kartikay Luthra is a great engineer who believes in a open and free internet access for everyone and hopes that people can make themselves by using internet";
+    return "Kartikay Luthra is a software engineer with a strong focus on distributed systems, real-time data processing, and applied machine learning. He advocates for an open and accessible internet, enabling individuals to build, learn, and innovate without barriers.";
   }
   // Omitting execute function makes this tool require human confirmation
 
@@ -62,51 +62,31 @@ const getInformation = tool({
  * This is suitable for low-risk operations that don't need oversight
  */
 const getExperience = tool({
-  description: "get the experience for the candidate",
+  description: "tells about Kartikay's experience",
   inputSchema: z.object({ name: z.string() }),
   execute: async ({ name}) => {
     console.log(`Getting experience for ${name}`);
-    return "";
+    return "Kartikay Luthra worked for a year at Fusionpact Technologies as a Software Engineer, collaborating with financial sector clients and building scalable data-driven systems using Apache Kafka, RDBMS, NoSQL databases, and advanced NLP libraries. During his time there, he built event-driven NLP pipelines that reduced model inference latency by 3x and deployed ML models via Docker on AWS. As an intern prior to that, he developed Java and Scala-based microservices processing over 15,000 daily requests, optimized SQL queries for performance gains, and enhanced ETL pipelines for reliability and efficiency. Kartikay’s experience bridges the gap between backend engineering, data infrastructure, and applied machine learning — combining a strong understanding of distributed systems with practical deployment experience in cloud environments.";
+
   }
 });
 
 const getProjects = tool({
-  description: "get the projects for the candidate",
+  description: "tells about Kartikay's project",
   inputSchema: z.object({ name: z.string() }),
   execute: async ({ name}) => {
     console.log(`Getting projects for ${name}`);
-    return "";
+    return "Kartikay has developed projects spanning applied machine learning, data science, NLP, and AI research. His portfolio includes work on a NYT Connections Solver Bot, Real-Time News Sentiment Analysis, an NFL Big Data Bowl 2026 analytics project, a Quant Risk Engine, and an AI Trading Repository. These projects demonstrate his focus on scalable AI systems, data-driven insights, and model interpretability. You can explore his work further at his GitHub: https://github.com/kartikxx07";
+    
   }
 });
 
-const scheduleTask = tool({
-  description: "A tool to schedule a task to be executed at a later time",
-  inputSchema: scheduleSchema,
-  execute: async ({ when, description }) => {
-    // we can now read the agent context from the ALS store
-    const { agent } = getCurrentAgent<Chat>();
-
-    function throwError(msg: string): string {
-      throw new Error(msg);
-    }
-    if (when.type === "no-schedule") {
-      return "Not a valid schedule input";
-    }
-    const input =
-      when.type === "scheduled"
-        ? when.date // scheduled
-        : when.type === "delayed"
-          ? when.delayInSeconds // delayed
-          : when.type === "cron"
-            ? when.cron // cron
-            : throwError("not a valid schedule input");
-    try {
-      agent!.schedule(input!, "executeTask", description);
-    } catch (error) {
-      console.error("error scheduling task", error);
-      return `Error scheduling task: ${error}`;
-    }
-    return `Task scheduled for type "${when.type}" : ${input}`;
+const scheduleameetinglinkwithkartik = tool({
+  description: "get the projects for Kartikay Luthra",
+  inputSchema: z.object({ name: z.string() }),
+  execute: async ({ name}) => {
+    console.log(`Looking up the schedule for ${name}`);
+    return "Kartikay is available that time pls email him at kartikluthra2020@gmail.com";
   }
 });
 
@@ -114,45 +94,11 @@ const scheduleTask = tool({
  * Tool to list all scheduled tasks
  * This executes automatically without requiring human confirmation
  */
-const getScheduledTasks = tool({
-  description: "List all tasks that have been scheduled",
-  inputSchema: z.object({}),
-  execute: async () => {
-    const { agent } = getCurrentAgent<Chat>();
-
-    try {
-      const tasks = agent!.getSchedules();
-      if (!tasks || tasks.length === 0) {
-        return "No scheduled tasks found.";
-      }
-      return tasks;
-    } catch (error) {
-      console.error("Error listing scheduled tasks", error);
-      return `Error listing scheduled tasks: ${error}`;
-    }
-  }
-});
 
 /**
  * Tool to cancel a scheduled task by its ID
  * This executes automatically without requiring human confirmation
  */
-const cancelScheduledTask = tool({
-  description: "Cancel a scheduled task using its ID",
-  inputSchema: z.object({
-    taskId: z.string().describe("The ID of the task to cancel")
-  }),
-  execute: async ({ taskId }) => {
-    const { agent } = getCurrentAgent<Chat>();
-    try {
-      await agent!.cancelSchedule(taskId);
-      return `Task ${taskId} has been successfully canceled.`;
-    } catch (error) {
-      console.error("Error canceling scheduled task", error);
-      return `Error canceling task ${taskId}: ${error}`;
-    }
-  }
-});
 
 /**
  * Export all available tools
@@ -161,9 +107,8 @@ const cancelScheduledTask = tool({
 export const tools = {
   getInformation,
   getExperience,
-  cancelScheduledTask,
-  getScheduledTasks,
-  getProjects
+  getProjects,
+  scheduleameetinglinkwithkartik
 } satisfies ToolSet;
 
 /**
