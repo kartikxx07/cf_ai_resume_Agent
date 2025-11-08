@@ -1,5 +1,9 @@
 # cf_ai_resume_Agent
-
+![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Zod](https://img.shields.io/badge/Zod-3068B7?style=for-the-badge&logo=zod&logoColor=white)
 
 Welcome to **Kartikay’s AI Chat Assistant**, an interactive chatbot powered by **Cloudflare's Agent Starter library**.  
 This assistant is designed to answer questions about Kartikay’s **background, experience, skills, and projects**, and even provide a link to schedule meetings.
